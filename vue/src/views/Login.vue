@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <div>{{  }}</div>
     <form>
       <div>
         <label for="username">ユーザー名</label>
@@ -25,10 +26,11 @@ export default {
   methods: {
     localLogin: async function () {
       try {
-        await axios.post('http://localhost:3000/auth/local', {
+        const result = await axios.post('http://localhost:3000/auth/local', {
           username: this.username,
           password: this.password
         })
+        console.log(result.data)
       } catch (err) {
         alert(JSON.stringify(err))
       }
